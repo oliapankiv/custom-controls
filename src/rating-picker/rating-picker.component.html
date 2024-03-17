@@ -1,0 +1,5 @@
+<ul class="rating-options" [ngClass]="{ disabled: disabled }">
+	<li *ngFor="let option of options" [ngClass]="{ active: value === option.key }" (click)="setValue(option.key)">
+		{{ option.value }}
+	</li>
+</ul>

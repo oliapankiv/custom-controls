@@ -1,0 +1,7 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+	<rating-picker formControlName="review" />
+
+	<pre>{{ form.value | json }}</pre>
+
+	<button type="submit">Save</button>
+</form>
