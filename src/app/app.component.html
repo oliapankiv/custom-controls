@@ -1,0 +1,51 @@
+<div class="select-wrapper">
+	<span class="select-title">Multi</span>
+	<custom-select
+		label="Pick the User"
+		multiple
+		[compareWith]="compareWithFn"
+		[displayWith]="displayWithFn"
+		[formControl]="selectValue"
+		[searchable]="true"
+		(closed)="onSearchChanged('')"
+		(searchChanged)="onSearchChanged($event)"
+	>
+		<custom-option *ngFor="let user of filteredUsers" [disabled]="user.disabled" [value]="user">
+			{{ user.name }}
+		</custom-option>
+	</custom-select>
+</div>
+
+<div class="select-wrapper">
+	<span class="select-title">Single</span>
+	<custom-select
+		label="Pick the User"
+		[compareWith]="compareWithFn"
+		[displayWith]="displayWithFn"
+		[formControl]="selectValueSingle"
+		[searchable]="true"
+		(closed)="onSearchChanged('')"
+		(searchChanged)="onSearchChanged($event)"
+	>
+		<custom-option *ngFor="let user of filteredUsers" [disabled]="user.disabled" [value]="user">
+			{{ user.name }}
+		</custom-option>
+	</custom-select>
+</div>
+
+<div class="select-wrapper">
+	<span class="select-title">Disabled</span>
+	<custom-select
+		label="Pick the User"
+		[compareWith]="compareWithFn"
+		[displayWith]="displayWithFn"
+		[formControl]="selectValueDisabled"
+		[searchable]="true"
+		(closed)="onSearchChanged('')"
+		(searchChanged)="onSearchChanged($event)"
+	>
+		<custom-option *ngFor="let user of filteredUsers" [disabled]="user.disabled" [value]="user">
+			{{ user.name }}
+		</custom-option>
+	</custom-select>
+</div>
