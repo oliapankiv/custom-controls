@@ -34,9 +34,10 @@ export class RatingPickerComponent implements OnChanges, ControlValueAccessor {
 
 	@Input()
 	@HostBinding('attr.tabIndex')
-	tabIndex = 0;
+	public tabIndex = 0;
 
 	@HostListener('blur') onBlur() {
+		console.log('blur');
 		this.onTouch();
 	}
 
@@ -53,25 +54,34 @@ export class RatingPickerComponent implements OnChanges, ControlValueAccessor {
 	constructor(private cd: ChangeDetectorRef) {}
 
 	public ngOnChanges(changes: SimpleChanges): void {
+		console.log('sraka');
 		changes['value'] && this.onChange(changes['value'].currentValue);
 	}
 
-	public writeValue(obj: RatingOptions): void {
-		this.value = obj;
+	public writeValue(value: RatingOptions): void {
+		this.value = value;
 		this.cd.markForCheck();
+
+		console.log('writeValue has been called', value);
 	}
 
 	public registerOnChange(fn: any): void {
 		this.onChange = fn;
+
+		console.log('registerOnChange has been called', fn);
 	}
 
 	public registerOnTouched(fn: any): void {
 		this.onTouch = fn;
+
+		console.log('registerOnTouched has been called', fn);
 	}
 
 	public setDisabledState?(isDisabled: boolean): void {
 		this.disabled = isDisabled;
 		this.cd.markForCheck();
+
+		console.log('setDisabledState has been called', isDisabled);
 	}
 
 	public setValue(value: RatingOptions) {
@@ -81,5 +91,7 @@ export class RatingPickerComponent implements OnChanges, ControlValueAccessor {
 		this.onChange(this.value);
 		this.onTouch();
 		this.change.emit(this.value);
+
+		console.log('setValue has been called', value);
 	}
 }

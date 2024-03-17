@@ -24,7 +24,19 @@ export class AppComponent implements OnInit {
 	public ngOnInit(): void {
 		setTimeout(() => {
 			this.form.controls.review.setValue(RatingPickerOption.great);
-		}, 3000);
+		}, 2000);
+
+		setTimeout(() => {
+			this.form.controls.review.disable();
+		}, 4000);
+
+		setTimeout(() => {
+			this.form.controls.review.enable();
+		}, 6000);
+
+		setTimeout(() => {
+			this.form.controls.review.setValue(RatingPickerOption.bad);
+		}, 8000);
 	}
 
 	public onSubmit(): void {
