@@ -1,6 +1,8 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
 	<rating-picker formControlName="review" />
 
+	<div class="review-textarea" contenteditable formControlName="reviewText"></div>
+
 	<pre>{{ form.value | json }}</pre>
 
 	<button type="submit">Save</button>

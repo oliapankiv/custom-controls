@@ -4,18 +4,21 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 import { RatingPickerComponent } from '../rating-picker/rating-picker.component';
 
+import { EditableContentValueAccessor } from '../editable-content.directive';
+
 import { RatingPickerOption } from '../rating-picker/rating-picker-option.enum';
 
 @Component({
 	selector: 'app-root',
 	standalone: true,
-	imports: [ReactiveFormsModule, RatingPickerComponent, JsonPipe],
+	imports: [ReactiveFormsModule, RatingPickerComponent, JsonPipe, EditableContentValueAccessor],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
 	public readonly form = new FormGroup({
 		review: new FormControl(RatingPickerOption.good),
+		reviewText: new FormControl(''),
 	});
 
 	public ngOnInit(): void {
